@@ -16,5 +16,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: echo " you are good "
-    - run: ls -l
+    - run: docker-compose -f docker-compose-build.yaml build --parallel
+    - run: docker tag udagram-api-feed georgepro1/udagram-api-feed:v1
+    - run: docker tag udagram-reverseproxy georgepro1/udagram-reverseproxy:v1
+    - run: docker tag udagram-frontend georgepro1/udagram-frontend:v1
+    - run: docker tag udagram-api-user georgepro1/udagram-api-user:v1
+    - run: docker push georgepro1/udagram-frontend:v1
+    - run: docker push georgepro1/udagram-api-feed:v1
+    - run: docker push georgepro1/udagram-reverseproxy:v1
+    - run: docker push georgepro1/udagram-api-user:v1
