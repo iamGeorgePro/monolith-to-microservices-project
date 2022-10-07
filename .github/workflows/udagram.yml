@@ -21,7 +21,7 @@ jobs:
     - run: docker tag udagram-reverseproxy georgepro1/udagram-reverseproxy:v1
     - run: docker tag udagram-frontend georgepro1/udagram-frontend:v1
     - run: docker tag udagram-api-user georgepro1/udagram-api-user:v1
-    - run: echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u "${{secrets.DOCKER_USERNAME}}" --password-stdin
+    - run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
     - run: docker push georgepro1/udagram-frontend:v1
     - run: docker push georgepro1/udagram-api-feed:v1
     - run: docker push georgepro1/udagram-reverseproxy:v1
